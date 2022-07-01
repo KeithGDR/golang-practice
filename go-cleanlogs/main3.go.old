@@ -1,0 +1,47 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+)
+
+const (
+	dirPrefix  = "D:/sourcemod/servers"
+	dirPostfix = "addons/sourcemod/logs/"
+)
+
+func main() {
+	fmt.Println("---\nCleaning up log folders...\n---")
+	var err error
+
+	//tf
+	if err = os.RemoveAll(dirPrefix + "/tf/tf/" + dirPostfix); err != nil {
+		log.Fatal(err)
+	}
+
+	if err = os.Mkdir(dirPrefix+"/tf/tf/"+dirPostfix, 0750); err != nil {
+		log.Fatal(err)
+	}
+
+	//left4dead2
+	if err = os.RemoveAll(dirPrefix + "/left4dead2/left4dead2/" + dirPostfix); err != nil {
+		log.Fatal(err)
+	}
+
+	if err = os.Mkdir(dirPrefix+"/left4dead2/left4dead2/"+dirPostfix, 0750); err != nil {
+		log.Fatal(err)
+	}
+
+	//csgo
+	if err = os.RemoveAll(dirPrefix + "/csgo/csgo/" + dirPostfix); err != nil {
+		log.Fatal(err)
+	}
+
+	if err = os.Mkdir(dirPrefix+"/csgo/csgo/"+dirPostfix, 0750); err != nil {
+		log.Fatal(err)
+	}
+
+	//success
+	fmt.Println("---\nAll log folders have been cleaned successfully.\n---")
+}

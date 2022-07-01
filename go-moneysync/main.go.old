@@ -1,0 +1,40 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math"
+	"os"
+)
+
+const (
+	percentageSavings = 0.20 //20% should be put aside for savings.
+	percentageTaxes   = 0.15 //15% should be put aside for taxes.
+)
+
+func main() {
+	//Calculate the total dollars made this year so far.
+	var total float64 = 50.00 + 50.00 + 20.00
+
+	//Show the total values based on the income made so far in the year.
+	fmt.Println("-- Total Values --")
+	fmt.Println("Total So Far: ", total)
+	fmt.Println("Total Taxes: ", math.Round(total*percentageTaxes+2))
+	fmt.Println("Total Savings: ", math.Round(total*percentageSavings+2))
+
+	//Show the calculations as reference.
+	fmt.Println("\n-- Calculations --")
+	fmt.Println("150.00 = Taxes(", math.Round(150.00*percentageTaxes+2), ") | Savings(", math.Round(150.00*percentageSavings+2), ")")
+	fmt.Println("100.00 = Taxes(", math.Round(100.00*percentageTaxes+2), ") | Savings(", math.Round(100.00*percentageSavings+2), ")")
+	fmt.Println("50.00 = Taxes(", math.Round(50.00*percentageTaxes+2), ") | Savings(", math.Round(50.00*percentageSavings+2), ")")
+	fmt.Println("25.00 = Taxes(", math.Round(25.00*percentageTaxes+2), ") | Savings(", math.Round(25.00*percentageSavings+2), ")")
+	fmt.Println("20.00 = Taxes(", math.Round(20.00*percentageTaxes+2), ") | Savings(", math.Round(20.00*percentageSavings+2), ")")
+	fmt.Println("15.00 = Taxes(", math.Round(15.00*percentageTaxes+2), ") | Savings(", math.Round(15.00*percentageSavings+2), ")")
+	fmt.Println("10.00 = Taxes(", math.Round(10.00*percentageTaxes+2), ") | Savings(", math.Round(10.00*percentageSavings+2), ")")
+	fmt.Println("5.00 = Taxes(", math.Round(5.00*percentageTaxes+2), ") | Savings(", math.Round(5.00*percentageSavings+2), ")")
+	fmt.Println("2.00 = Taxes(", math.Round(2.00*percentageTaxes+2), ") | Savings(", math.Round(2.00*percentageSavings+2), ")")
+
+	//Wait for a key to be pressed to exit the program.
+	fmt.Println("\nPress any key to exit.")
+	bufio.NewReader(os.Stdin).ReadBytes('\n')
+}

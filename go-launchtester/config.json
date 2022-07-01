@@ -1,0 +1,9 @@
+{
+    "serverDirectories": ["tf", "csgo", "left4dead2", "cstrike"],
+	"serverConnects": {
+		"tf": "192.168.56.1:27015",
+		"csgo": "192.168.56.1:27015",
+		"left4dead2": "192.168.56.1:27015",
+		"cstrike": "192.168.56.1:27015"
+	}
+}

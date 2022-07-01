@@ -1,0 +1,5 @@
+{
+    "smVersion": "1.11",
+    "serverDirectories": ["cstrike"],
+    "replaceDirectories": ["bin", "extensions", "gamedata", "plugins", "translations"]
+}

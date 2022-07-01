@@ -1,0 +1,57 @@
+package main
+
+import (
+	"bufio"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
+)
+
+const (
+	percentageSavings = 0.20 //20% should be put aside for savings.
+	percentageTaxes   = 0.15 //15% should be put aside for taxes.
+	percentageTeeth   = 0.10 //10% should be put aside for teeth.
+)
+
+func main() {
+	//Calculate the total dollars made this year so far.
+	var totals []float64
+	var jsonData []byte
+	var err error
+	var total float64
+	referenceValues := []float64{150.00, 100.00, 50.00, 25.00, 20.00, 15.00, 10.00, 5.00, 2.00}
+
+	//Parse the file.
+	if jsonData, err = ioutil.ReadFile("total.json"); err != nil {
+		log.Fatal(err)
+	}
+
+	// Unmarshal json slice into slice of floats.
+	if err = json.Unmarshal([]byte(jsonData), &totals); err != nil {
+		log.Fatal(err)
+	}
+
+	//Add up the total.
+	for _, i := range totals {
+		total += i
+	}
+
+	fmt.Println("-- Total Values --")
+	fmt.Printf("Total So Far: %.2f\n", total)
+	fmt.Printf("Total Taxes: %.2f\n", total*percentageTaxes)
+	fmt.Printf("Total Savings: %.2f\n", total*percentageSavings)
+	fmt.Printf("Total Teeth: %.2f\n", total*percentageTeeth)
+
+	//Reference Values
+	fmt.Println("\n-- Calculations --")
+
+	for _, i := range referenceValues {
+		fmt.Printf("%.2f = Taxes(%.2f) | Savings(%.2f) | Teeth(%.2f)\n", i, i*percentageTaxes, i*percentageSavings, i*percentageTeeth)
+	}
+
+	//Wait for a key to be pressed to exit the program.
+	fmt.Println("\nPress any key to exit.")
+	bufio.NewReader(os.Stdin).ReadBytes('\n')
+}

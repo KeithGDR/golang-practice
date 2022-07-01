@@ -1,0 +1,48 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+)
+
+func main() {
+	fmt.Println("---\nCleaning up log folders...\n---")
+	var err error
+
+	//tf
+	if err = os.RemoveAll("D:/sourcemod/servers/tf/tf/addons/sourcemod/logs/"); err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println("All logs on tf servers deleted successfully.")
+	}
+
+	if err = os.Mkdir("D:/sourcemod/servers/tf/tf/addons/sourcemod/logs/", 0750); err != nil {
+		log.Fatal(err)
+	}
+
+	//left4dead2
+	if err = os.RemoveAll("D:/sourcemod/servers/left4dead2/left4dead2/addons/sourcemod/logs/"); err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println("All logs on left4dead2 servers deleted successfully.")
+	}
+
+	if err = os.Mkdir("D:/sourcemod/servers/left4dead2/left4dead2/addons/sourcemod/logs/", 0750); err != nil {
+		log.Fatal(err)
+	}
+
+	//csgo
+	if err = os.RemoveAll("D:/sourcemod/servers/csgo/csgo/addons/sourcemod/logs/"); err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println("All logs on csgo servers deleted successfully.")
+	}
+
+	if err = os.Mkdir("D:/sourcemod/servers/csgo/csgo/addons/sourcemod/logs/", 0750); err != nil {
+		log.Fatal(err)
+	}
+
+	//success
+	fmt.Println("---\nAll log folders have been cleaned successfully.\n---")
+}
